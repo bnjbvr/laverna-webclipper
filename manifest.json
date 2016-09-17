@@ -2,8 +2,16 @@
   "manifest_version": 2,
 
   "name": "Laverna clipper",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Allows one to clip the content of a page to Laverna",
+
+  "applications": {
+    "gecko": {
+      "id": "{61da069f-c239-4d48-9a03-c5dcd184e64d}",
+      "strict_min_version": "48.0",
+      "strict_max_version": "*"
+    }
+  },
 
   "content_scripts": [
     {
