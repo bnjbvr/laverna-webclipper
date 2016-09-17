@@ -63,7 +63,6 @@ function onClipperAnswer(article) {
     }).then(() => {
         return currentTab();
     }).then(tab => {
-        console.log(tab);
         console.log('Sending message', tab.id);
         chrome.tabs.sendMessage(tab.id, { action: "insert", article });
     });
@@ -73,16 +72,16 @@ function onClick() {
     var tabId;
     currentTab().then(tab => {
         tabId = tab.id;
-        //return executeScript(tabId, 'src/vendor/Readability.js');
-    //}).then(() => {
-        //return executeScript(tabId, 'src/vendor/md.min.js');
-    //}).then(() => {
-        //return executeScript(tabId, 'src/content.js');
-    //}).then(() => {
+        return executeScript(tabId, 'src/vendor/Readability.js');
+    }).then(() => {
+        return executeScript(tabId, 'src/vendor/md.min.js');
+    }).then(() => {
+        return executeScript(tabId, 'src/content-send-article.js');
+    }).then(() => {
         console.log('sending message to injected script');
         chrome.tabs.sendMessage(tabId, { action: "clip" }, article => {
-            chrome.tabs.reload(tabId);
             onClipperAnswer(article);
+            chrome.tabs.reload(tabId);
         });
     }).catch(err => {
         console.error('Error', err);
