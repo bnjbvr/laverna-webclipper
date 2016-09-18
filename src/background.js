@@ -19,7 +19,8 @@ function getBaseURL() {
     console.log('Retrieving base url...');
     return new Promise(accept => {
         chrome.storage.local.get('url', res => {
-            accept(res.url);
+            var url = res && res.url && res.url.length ? res.url : 'https://laverna.cc/app';
+            accept(url);
         });
     });
 }
