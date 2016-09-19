@@ -11,6 +11,8 @@ You can also set any URL for the Laverna instance base URL, for example if you s
 
 Tested under Firefox 51; quality is not assured.
 
+See [the related blog post](https://blog.benj.me/2016/09/18/laverna-webclipper-webextension/).
+
 ## It doesn't do X
 
 Pull requests accepted :).
